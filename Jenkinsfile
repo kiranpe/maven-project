@@ -13,20 +13,22 @@ pipeline {
         }
 
 
-    stage('Deployments'){
+    stage ('Deployments'){
         parellel{
-            stage('Deploy to staging'){
-                steps{
+            stage ('Deploy to staging'){
+                steps {
                     sh "scp -i /root/ssh/MyVPCKP.pem **/target/webapp.war ec2-user@${parms.tomcat-test}:/var/lib/tomcat7/webapps"
                 }
-            }
-        }    
-            stage('Deploy to Prod'){
-                steps{
+            }    
+               stage ('Deploy to Prod'){
+                   steps {
                     sh "scp -i /root/ssh/MyVPCKP.pem **/target/webapp.war ec2-user@${parms.tomcat-prod}:/var/lib/tomcat7/webapps"
                 }
+            
             }
+    
         }
         
 }
+
 
