@@ -12,15 +12,12 @@ pipeline {
             pollSCM('* * * * *')
         }
 
-    node{
-        env.JAVA_HOME="${tool '/sites/jdk1.8.0_161'}"
-        env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
-        sh 'java -version'
-    }
-    
     stages{
         stage('Build'){
             steps {
+                env.JAVA_HOME="${tool '/sites/jdk1.8.0_161'}"
+                env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+                sh "java -version"
                 sh "mvn clean package"
             }
             post {
