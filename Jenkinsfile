@@ -14,7 +14,7 @@ pipeline {
 
 
     stage ('Deployments'){
-        parellel{
+        parallel{
             stage ('Deploy to staging'){
                 steps {
                     sh "scp -i /root/ssh/MyVPCKP.pem **/target/webapp.war ec2-user@${parms.tomcat-test}:/var/lib/tomcat7/webapps"
