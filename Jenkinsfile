@@ -27,12 +27,12 @@ pipeline {
             parallel{
                 stage ('Deploy to staging'){
                    steps {
-                     sh "scp -i /root/ssh/MyVPCKP.pem **/target/webapp.war ec2-user@${params.tomcat-test}:/var/lib/tomcat7/webapps"
+                     sh "scp -i /root/ssh/MyVPCKP.pem **/target/webapp.war ec2-user@${params.tomcat-test}:/var/lib/tomcat7/webapps/"
             }
         }   
                 stage ('Deploy to Prod'){
                   steps {
-                    sh "scp -i /root/ssh/MyVPCKP.pem **/target/webapp.war ec2-user@${params.tomcat-prod}:/var/lib/tomcat7/webapps"
+                    sh "scp -i /root/ssh/MyVPCKP.pem **/target/webapp.war ec2-user@${params.tomcat-prod}:/var/lib/tomcat7/webapps/"
                 }           
     }
 }
