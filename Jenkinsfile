@@ -11,16 +11,30 @@ pipeline {
     triggers{
             pollSCM('* * * * *')
         }
-
-
-    stage ('Deploy to staging'){
-        steps {
-           sh "scp -i /root/ssh/MyVPCKP.pem **/target/webapp.war ec2-user@${parms.tomcat-test}:/var/lib/tomcat7/webapps"
+    stages{
+        stage('Build'){
+            steps {
+                sh "mvn clean package"
+            }
+            post {
+                echo "Now Archiving..."
+                archiveArtifacts artifacts: '**/target/*.war'
+            }
+        }
+    
+        stage('Deployments'){
+            parallel{
+                stage ('Deploy to staging'){
+                   steps {
+                     sh "scp -i /root/ssh/MyVPCKP.pem **/target/webapp.war ec2-user@${parms.tomcat-test}:/var/lib/tomcat7/webapps"
             }
         }   
-    stage ('Deploy to Prod'){
-        steps {
-            sh "scp -i /root/ssh/MyVPCKP.pem **/target/webapp.war ec2-user@${parms.tomcat-prod}:/var/lib/tomcat7/webapps"
-            }           
+                stage ('Deploy to Prod'){
+                  steps {
+                    sh "scp -i /root/ssh/MyVPCKP.pem **/target/webapp.war ec2-user@${parms.tomcat-prod}:/var/lib/tomcat7/webapps"
+                }           
     }
-}        
+}
+        }   
+    }
+}    
