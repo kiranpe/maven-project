@@ -27,7 +27,7 @@ pipeline {
             parallel{
                 stage ('Deploy to staging'){
                    steps {
-                     sh "scp -i /root/ssh/MyVPCKP.pem **/target/webapp.war ec2-user@${params.tomcat_test}:/var/lib/tomcat7/webapps/"
+                     sh "scp -i /root/ssh/newkeypair.pem **/target/webapp.war ec2-user@${params.tomcat_test}:/var/lib/tomcat7/webapps/"
             }
         }
                 stage ('Deploy to Prod'){
