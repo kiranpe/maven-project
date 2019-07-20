@@ -214,7 +214,7 @@
     <connection>scm:git:git@github.com:kiranpe/maven-project.git</connection>
     <developerConnection>scm:git:git@github.com:kiranpe/maven-project.git</developerConnection>
     <tag>HEAD</tag>
-    <url>http://github.com/jleetutorial/maven-project</url>
+    <url>https://github.com/kiranpe/maven-project</url>
   </scm>
 
   <prerequisites>
