@@ -23,7 +23,7 @@
 
   <distributionManagement>
     <repository>
-      <id>release</id>
+      <id>releases</id>
       <url>http://ecombuild01.bodc.att.com:8081/nexus/content/repositories/releases</url>
   </repository>
   <snapshotRepository>
