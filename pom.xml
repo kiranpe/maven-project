@@ -23,9 +23,9 @@
   
   <distributionManagement>
   <repository>
-    <id>releases</id>
+    <id>maven-releases</id>
     <!-- CHANGE HERE by your team nexus server -->
-    <url>http://ecombuild01.bodc.att.com:8081/nexus/content/repositories/releases/</url>
+    <url>http://ecombuild01.bodc.att.com:8081/repository/maven-releases/</url>
   </repository>
   <snapshotRepository>
     <id>maven-snapshots</id>
