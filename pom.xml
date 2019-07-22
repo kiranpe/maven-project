@@ -26,10 +26,10 @@
       <id>maven-releases</id>
       <url>http://ecombuild01.bodc.att.com:8081/repository/maven-releases/</url>
   </repository>
-  <snapshotRepository>
+  <repository>
     <id>maven-snapshots</id>
     <url>http://ecombuild01.bodc.att.com:8081/repository/maven-snapshots/</url>
-  </snapshotRepository>
+  </repository>
   </distributionManagement>
 
   <build>
