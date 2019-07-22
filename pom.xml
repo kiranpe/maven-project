@@ -30,7 +30,7 @@
   <snapshotRepository>
     <id>snapshots</id>
     <!-- CHANGE HERE by your team nexus server -->
-    <url>http://ecombuild01.bodc.att.com:8081/nexus/content/repositories/snapshots/</url>
+    <url>http://ecombuild01.bodc.att.com:8081/repository/maven-snapshots/</url>
   </snapshotRepository>
 </distributionManagement>
 
