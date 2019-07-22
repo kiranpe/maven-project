@@ -28,7 +28,7 @@
     <url>http://ecombuild01.bodc.att.com:8081/nexus/content/repositories/releases/</url>
   </repository>
   <snapshotRepository>
-    <id>snapshots</id>
+    <id>maven-snapshots</id>
     <!-- CHANGE HERE by your team nexus server -->
     <url>http://ecombuild01.bodc.att.com:8081/repository/maven-snapshots/</url>
   </snapshotRepository>
