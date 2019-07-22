@@ -22,7 +22,8 @@
   </modules>
 
   <distributionManagement>
-    <repository>
+  <repositories> 
+  <repository>
       <id>maven-releases</id>
       <url>http://ecombuild01.bodc.att.com:8081/repository/maven-releases/</url>
   </repository>
@@ -30,6 +31,7 @@
     <id>maven-snapshots</id>
     <url>http://ecombuild01.bodc.att.com:8081/repository/maven-snapshots/</url>
   </repository>
+  </repositories>
   </distributionManagement>
 
   <build>
