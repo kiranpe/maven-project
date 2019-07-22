@@ -23,12 +23,12 @@
 
   <distributionManagement>
     <repository>
-      <id><maven-releases/id>
+      <id><maven-releases</id>
       <url>http://ecombuild01.bodc.att.com:8081/repository/maven-releases/</url>
   </repository>
   <snapshotRepository>
-    <id><maven-snapshots/id>
-    <url><http://ecombuild01.bodc.att.com:8081/repository/maven-snapshots//url>
+    <id><maven-snapshots</id>
+    <url>http://ecombuild01.bodc.att.com:8081/repository/maven-snapshots/</url>
   </snapshotRepository>
   </distributionManagement>
 
