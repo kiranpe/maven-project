@@ -6,7 +6,7 @@
   <parent>
     <groupId>com.att.ecom.maven-project</groupId>
     <artifactId>maven-project</artifactId>
-    <version>1.8</version>
+    <version>1.9-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
