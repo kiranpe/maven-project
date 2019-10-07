@@ -1,0 +1,15 @@
+#Checking Docker image Quality before deploying to k8s
+
+ansible-playbook docker-image.yaml
+
+#Deploying image on K8S
+
+cd "$WORKSPACE"/ymlfiles/
+
+#push rsa key to master node
+
+ansible-playbook push_rsa_key.yaml -i hosts --private-key /sites/keyfile.pem
+
+#Deploy image
+
+ansible-playbook webapp.yaml -i hosts
