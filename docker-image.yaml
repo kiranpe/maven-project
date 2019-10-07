@@ -35,7 +35,7 @@
     - name: Print image is fine or not
       shell: echo "image is good.. we can push to docker hub"
     - name: pushing image to docker
-      command: sudo docker push kiranp23/weapp:latest
+      command: sudo docker push kiranp23/webapp:latest
       args:
          warn: no
     - name:  stopping container
