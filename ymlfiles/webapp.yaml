@@ -91,7 +91,7 @@
        register: result
      - set_fact: public_ip={{ result.stdout }}
      - name: Run Health Check
-       uri: url=http://{{ public_ip }}:{{ port }}/webapp/index.html
+       uri: url=http://{{ public_ip }}:{{ port }}/webapp/login.html
        register: result
      - debug: msg="Url Status is {{ result.status }}"
      - name: Health Check Url 
