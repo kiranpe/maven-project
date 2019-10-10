@@ -9,7 +9,7 @@
   <version>1.9-SNAPSHOT</version>
   <name>Maven Project</name>
   <description>Sample Maven project with a working, deployable site.</description>
-  <url>http://www.example.com</url>
+  <url>http://your.site.url</url>
 
   <properties>
     <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
@@ -25,12 +25,12 @@
   <repository>
     <id>maven-releases</id>
     <!-- CHANGE HERE by your team nexus server -->
-    <url>http://ecombuild01.bodc.att.com:8081/repository/maven-releases/</url>
+    <url>http://18.224.39.216:8081/repository/maven-releases/</url>
   </repository>
   <snapshotRepository>
     <id>maven-snapshots</id>
     <!-- CHANGE HERE by your team nexus server -->
-    <url>http://ecombuild01.bodc.att.com:8081/repository/maven-snapshots/</url>
+    <url>http://18.224.39.216:8081/repository/maven-snapshots/</url>
   </snapshotRepository>
 </distributionManagement>
 
