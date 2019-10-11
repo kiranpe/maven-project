@@ -5,7 +5,7 @@
 
   <parent>
     <groupId>com.att.ecom.idp</groupId>
-    <artifactId>maven-project</artifactId>
+    <artifactId>idp</artifactId>
     <version>2.0-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
