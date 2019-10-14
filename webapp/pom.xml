@@ -6,7 +6,7 @@
   <parent>
     <groupId>com.att.ecom</groupId>
     <artifactId>idp</artifactId>
-    <version>3.0</version>
+    <version>3.0-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
