@@ -16,18 +16,18 @@ pipeline {
         }
         stage ('Check Docker Image Quality'){
                    steps {
-                     sh "ansible-playbook docker-image.yaml"
+                     sh "ansible-playbook ${env.WORKSPACE}/docker-image.yaml"
             }
         }
         stage ('Add rsa key to K8S Cluster'){
                   steps {
                     sh "ansible-playbook ${env.WORKSPACE}/ymlfiles/push_rsa_key.yaml -i ${env.WORKSPACE}/ymlfiles/hosts --private-key /sites/keyfile.pem"
                 }
-    }
+        }
         stage ('Deploy image on K8S cluster'){
                   steps {
                     sh "ansible-playbook ${env.WORKSPACE}/ymlfiles/webapp.yaml -i ${env.WORKSPACE}/ymlfiles/hosts"
                 }
-    }
+        }
     }
 }
