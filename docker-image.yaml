@@ -1,4 +1,4 @@
-- name: building image and checking health of url first
+- name: building image and checking health of url
   hosts: localhost
 
   tasks:
