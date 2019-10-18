@@ -15,7 +15,6 @@ pipeline {
         }
    
         stage('Deployments'){
-            parallel{
                 stage ('Check Docker Image Quality'){
                    steps {
                      sh "ansible-playbook docker-image.yaml"
@@ -31,8 +30,6 @@ pipeline {
                     sh "ansible-playbook ${env.WORKSPACE}/ymlfiles/webapp.yaml -i ${env.WORKSPACE}/ymlfiles/hosts"
                 }
     }
-
-}
         }
     }
 }
