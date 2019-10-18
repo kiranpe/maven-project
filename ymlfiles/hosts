@@ -1,4 +1,4 @@
 [k8sworker]
-3.19.77.176 ansible_user=ubuntu ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+3.17.153.156 ansible_user=ubuntu ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 [k8smaster]
-18.217.71.96 ansible_user=ubuntu ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+18.219.204.45 ansible_user=ubuntu ansible_ssh_common_args='-o StrictHostKeyChecking=no'

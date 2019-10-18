@@ -1,42 +1,38 @@
 pipeline {
     agent any
-    
-    parameters{
-            string(name: 'tomcat_test', defaultValue: '35.154.25.42', description: 'Staging Server')
-            string(name: 'tomcat_prod', defaultValue: '54.147.98.44', description: 'Production Server')
-        }
-
-    triggers{
-            pollSCM('* * * * *')
-        }
-
+   
     stages{
         stage('Build'){
             steps {
-                sh "mvn clean package"
+                sh "mvn clean install"
             }
             post {
                 success{
                 echo "Now Archiving..."
                 archiveArtifacts artifacts: '**/target/*.war'
-                }  
+                }
             }
         }
-    
+   
         stage('Deployments'){
             parallel{
-                stage ('Deploy to staging'){
+                stage ('Check Docker Image Quality'){
                    steps {
-                     sh "scp -i /root/ssh/newkeypair.pem **/target/webapp.war ec2-user@${params.tomcat_test}:/var/lib/tomcat7/webapps/"
+                     sh "ansible-playbook docker-image.yaml"
             }
         }
-                stage ('Deploy to Prod'){
+                stage ('Add rsa key to K8S Cluster'){
                   steps {
-                    sh "scp -i /root/ssh/MyVPCKP.pem **/target/webapp.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps/"
+                    sh "ansible-playbook **/ymlfiles/push_rsa_key.yaml -i **/ymlfiles/hosts --private-key /sites/keyfile.pem"
+                }
+    }
+                stage ('Deploy image on K8S cluster'){
+                  steps {
+                    sh "ansible-playbook **/ymlfiles/webapp.yaml -i **/ymlfiles/hosts"
                 }
     }
 
 }
-        }   
+        }
     }
-}    
+}
