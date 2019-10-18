@@ -23,12 +23,12 @@ pipeline {
         }
                 stage ('Add rsa key to K8S Cluster'){
                   steps {
-                    sh "ansible-playbook **/ymlfiles/push_rsa_key.yaml -i **/ymlfiles/hosts --private-key /sites/keyfile.pem"
+                    sh "ansible-playbook ${env.WORKSPACE}/ymlfiles/push_rsa_key.yaml -i ${env.WORKSPACE}/ymlfiles/hosts --private-key /sites/keyfile.pem"
                 }
     }
                 stage ('Deploy image on K8S cluster'){
                   steps {
-                    sh "ansible-playbook **/ymlfiles/webapp.yaml -i **/ymlfiles/hosts"
+                    sh "ansible-playbook ${env.WORKSPACE}/ymlfiles/webapp.yaml -i ${env.WORKSPACE}/ymlfiles/hosts"
                 }
     }
 
