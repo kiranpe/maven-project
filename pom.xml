@@ -22,17 +22,17 @@
   </modules>
   
   <distributionManagement>
-  <repository>
-    <id>maven-releases</id>
-    <!-- CHANGE HERE by your team nexus server -->
-    <url>http://3.15.141.177:8081/repository/maven-releases/</url>
-  </repository>
-  <snapshotRepository>
-    <id>maven-snapshots</id>
-    <!-- CHANGE HERE by your team nexus server -->
-    <url>http://3.15.141.177:8081/repository/maven-snapshots/</url>
-  </snapshotRepository>
-</distributionManagement>
+    <repository>
+      <id>maven-releases</id>
+      <!-- CHANGE HERE by your team nexus server -->
+      <url>http://13.58.244.114:8081/repository/maven-releases/</url>
+     </repository>
+     <snapshotRepository>
+      <id>maven-snapshots</id>
+      <!-- CHANGE HERE by your team nexus server -->
+      <url>http://13.58.244.114:8081/repository/maven-snapshots/</url>
+     </snapshotRepository>
+  </distributionManagement>
 
 
   <build>
