@@ -47,6 +47,6 @@ Use "Pipeline Script from SCM" option in pipeline..
 
 Select Git from SCM and use repo https://github.com/kiranpe/maven-project.git
 
-Update hosts file with K8S cluster ip's and pom.xml with nexus ip..
+Update hosts file with K8S cluster ip's and pom.xml with nexus ip.. in case if you are not using nexus then use "clean install" in jenkinsfile..
 
 Run the build..
