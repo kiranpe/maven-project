@@ -5,7 +5,17 @@ This repo has maven code and yaml files to build image and deploy on K8S cluster
 
 Set up Java and Maven in Global tools in jenkins..
 
+Create nexus deployment user and change encrypt password with your encrypt passworld by following below stpes..
+
+Creating Maven security file..
+
+mvn -emp yourmasterpassword --> generates master encrypted password and update in settings-security.xml
+
+mvn -ep yourdeploymentuserpassword --> generates deployment user encryoted password and update it in settings.xml
+
 Update hosts file with K8S cluster ip's..
+
+Then follow either one of the below process..
 
 #Free Style Project:
 ---------------------
