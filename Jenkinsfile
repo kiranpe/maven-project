@@ -5,7 +5,7 @@ pipeline {
         stage('Build'){
             steps {
                 echo "Build Maven code and Deploy artifacts to Nexus3"
-                sh "mvn clean install"
+                sh "mvn clean deploy"
             }
             post {
                 success{
