@@ -4,7 +4,7 @@ pipeline {
     stages{
         stage('Build'){
             steps {
-                echo "build maven code and deploy artifacts to Nexus3"
+                echo "Build Maven code and Deploy artifacts to Nexus3"
                 sh "mvn clean deploy"
             }
             post {
@@ -19,7 +19,7 @@ pipeline {
                      sh "ansible-playbook ${env.WORKSPACE}/docker-image.yaml"
             }
         }
-        stage ('Add rsa key to K8S Cluster'){
+        stage ('Add RSA key to K8S Cluster'){
                   steps {
                     sh "ansible-playbook ${env.WORKSPACE}/ymlfiles/push_rsa_key.yaml -i ${env.WORKSPACE}/ymlfiles/hosts --private-key /sites/keyfile.pem"
                 }
