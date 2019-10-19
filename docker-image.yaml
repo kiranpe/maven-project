@@ -38,6 +38,7 @@
       command: sudo docker push kiranp23/webapp:latest
       args:
          warn: no
+      become: yes
     - name:  stopping container
       command: sudo docker stop webapp
       args:
