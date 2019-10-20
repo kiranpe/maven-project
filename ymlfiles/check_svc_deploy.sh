@@ -7,7 +7,7 @@ port=$(sed -n '/k8sworker]/,/k8smaster]/p' /sites/scripts/hosts | sed '1d; $d;' 
 
 for i in $port
 do
-j=$(echo "$i" | cut -d '.' -f1)
+j=$(echo "$i" | cut -d '.' -f4)
 
 kubectl get svc -n com-att-oce-test | grep webapp-${j}
 if [ $? = 0 ];then
