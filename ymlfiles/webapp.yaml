@@ -74,7 +74,7 @@
        shell: |
            for i in {{ target_ip }}
            do 
-            j=$(echo "$i" | cut -d '.' -f1)
+            j=$(echo "$i" | cut -d '.' -f4)
             kubectl describe svc webapp-${j} -n com-att-oce-test | grep "NodePort:" | awk -F">" '{print $2}' | awk -F"/" '{print $1}' | sed -e 's/^[ \t]*//'
            done
        register: node_port
