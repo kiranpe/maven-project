@@ -44,7 +44,7 @@
        shell: |
              for i in {{ target_ip }}
              do
-               j=$(echo "$i" | cut -d '.' -f1) 
+               j=$(echo "$i" | cut -d '.' -f4) 
                kubectl expose deploy webapp --external-ip="${i}" --port=7010 --target-port=8080 --type=NodePort --name=webapp-${j} -n com-att-oce-test
              done
      - name: get pod details
