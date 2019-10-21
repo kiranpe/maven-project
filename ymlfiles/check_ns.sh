@@ -5,7 +5,7 @@
 kubectl get ns | grep com-att-oce-test 
 
 if [ $? = 0 ];then
-echo "ns already present.."
+echo "ns com-att-oce-test already present.."
 else
 kubectl create ns com-att-oce-test
 fi
