@@ -16,7 +16,7 @@ pipeline {
         }
         stage ('Check Docker Image Quality'){
                    steps {
-                     sh "ansible-playbook ${env.WORKSPACE}/docker-image.yaml"
+                     sh "ansible-playbook ${env.WORKSPACE}/docker-image.yml"
             }
         }
         stage ('Add RSA key to K8S Cluster'){
