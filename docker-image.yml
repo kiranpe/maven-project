@@ -3,11 +3,11 @@
 
   tasks:
     - name: Build docker image
-      command: sudo docker build -t kiranp23/webapp:latest .
+      command: docker build -t kiranp23/webapp:latest .
       args:
          warn: no
     - name: Run Docker image
-      command: sudo docker run -p 7010:8080 --name webapp -d kiranp23/webapp:latest
+      command: docker run -p 7010:8080 --name webapp -d kiranp23/webapp:latest
       args:
          warn: no
     - name: Get the external ip
@@ -35,19 +35,19 @@
     - name: Print image is fine or not
       shell: echo "image is good.. we can push to docker hub"
     - name: pushing image to docker
-      command: sudo docker push kiranp23/webapp:latest
+      command: docker push kiranp23/webapp:latest
       args:
          warn: no
       become: yes
     - name:  stopping container
-      command: sudo docker stop webapp
+      command: docker stop webapp
       args:
          warn: no
     - name: removing container
-      command: sudo docker rm webapp
+      command: docker rm webapp
       args:
          warn: no
     - name: removing image from local
-      command: sudo docker rmi kiranp23/webapp:latest
+      command: docker rmi kiranp23/webapp:latest
       args:
          warn: no
