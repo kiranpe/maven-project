@@ -29,16 +29,14 @@
       delay: 5
     - debug: msg="Url staus is {{ result.status }}"
 
-    - name:  stopping container
+    - name: Stopping container
       command: docker stop webapp
 
-    - name: removing container
+    - name: Removing container
       command: docker rm webapp
 
-    - debug: msg="Pushing image to dockerhub"
-    - name: pushing image to docker
+    - name: Pushing image to dockerhub
       command: docker push kiranp23/webapp:{{ image_version }}
 
-    - debug: msg="Removing local image"
-    - name: removing image from local
+    - name: Removing image from local
       command: docker rmi kiranp23/webapp:{{ image_version }}
