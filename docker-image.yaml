@@ -1,22 +1,23 @@
 - name: building image and checking health of url
   hosts: localhost
+  gather_facts: no
 
   tasks:
     - name: Build docker image
-      command: sudo docker build -t kiranp23/webapp:latest .
-      args:
-         warn: no
+      command: docker build -t kiranp23/webapp:latest .
+
     - name: Run Docker image
-      command: sudo docker run -p 7010:8080 --name webapp -d kiranp23/webapp:latest
-      args:
-         warn: no
+      command: docker run -p 7010:8080 --name webapp -d kiranp23/webapp:latest
+
     - name: Get the external ip
       command: curl http://169.254.169.254/latest/meta-data/public-ipv4
       args:
         warn: false
       register: result
     - debug: msg={{ result.stdout }}
+
     - set_fact: external_ip={{ result.stdout }}
+
     - name: check container up or not
       shell: |
           until $(curl -kIs http://{{ external_ip }}:7010 >> /sites/logs/webapp-image.log && grep 200 /sites/logs/webapp-image.log > /dev/null); do
@@ -25,6 +26,7 @@
           done
       register: result
     - debug: msg="Container is Up.. Checking Url Status.."
+
     - name: Checking url status.. wait for 200
       uri: url=http://{{ external_ip }}:7010/webapp/index.html
       register: result
@@ -32,22 +34,18 @@
       retries: 5
       delay: 5
     - debug: msg="Url staus is {{ result.status }}"
+
     - name: Print image is fine or not
       shell: echo "image is good.. we can push to docker hub"
-    - name: pushing image to docker
-      command: sudo docker push kiranp23/webapp:latest
-      args:
-         warn: no
-      become: yes
+
     - name:  stopping container
-      command: sudo docker stop webapp
-      args:
-         warn: no
+      command: docker stop webapp
+
     - name: removing container
-      command: sudo docker rm webapp
-      args:
-         warn: no
+      command: docker rm webapp
+
+    - name: pushing image to docker
+      command: docker push kiranp23/webapp:latest
+
     - name: removing image from local
-      command: sudo docker rmi kiranp23/webapp:latest
-      args:
-         warn: no
+      command: docker rmi kiranp23/webapp:latest
