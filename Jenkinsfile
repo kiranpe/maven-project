@@ -4,7 +4,7 @@ pipeline {
     environment {
      DOCKER_REGISTRY='http://registry-1.docker.io'
      CONTAINER='apache'
-     VERSION="1.${BUILD_NUMBER}"
+     IMAGE_VERSION="1.${BUILD_NUMBER}"
      PROD_VERSION="latest"
    }
    
@@ -21,12 +21,12 @@ pipeline {
                 }
             }
         }
-        stage ('Check Docker Image Quality'){
+        stage ('Create Docker Image'){
                    steps {
-                    sh """ansible-playbook ${WORKSPACE}/docker-image.yml -e image_version='${env.PROD_VERSION}'"""
+                    sh """ansible-playbook ${WORKSPACE}/docker-image.yml -e image_version='${env.IMAGE_VERSION}'"""
             }
         }
-        stage ('Add RSA key to K8S Cluster'){
+/*        stage ('Add RSA key to K8S Cluster'){
                   steps {
                     sh "ansible-playbook ${env.WORKSPACE}/ymlfiles/push_rsa_key.yml -i ${env.WORKSPACE}/ymlfiles/hosts --private-key /sites/keyfile.pem"
                 }
@@ -35,6 +35,6 @@ pipeline {
                   steps {
                     sh "ansible-playbook ${env.WORKSPACE}/ymlfiles/webapp.yml -i ${env.WORKSPACE}/ymlfiles/hosts"
                 }
-        }
+        } */
     }
 }
