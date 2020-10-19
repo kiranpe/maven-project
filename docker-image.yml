@@ -1,5 +1,6 @@
 - name: Build Docker Image and Check Health
   hosts: localhost
+  become: yes
   gather_facts: no
 
   tasks:
