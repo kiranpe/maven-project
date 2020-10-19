@@ -24,11 +24,13 @@
       
     - name: Checking url status.. wait for 200
       uri: url=http://{{ external_ip }}:7010/webapp/index.html
-      register: result
-      until: result.status == 200
+      register: output
+      until: output.status == 200
       retries: 5
       delay: 5
     - debug: msg="Url staus is {{ result.status }}"
+    
+    - set_fact: url_status={{ output.status }}
 
     - name: Stopping container
       command: docker stop webapp
@@ -41,6 +43,7 @@
 
     - name: Pushing image to dockerhub
       command: docker push kiranp23/webapp:{{ image_version }}
+      when: url_status == 200
 
     - name: Removing image from local
       command: docker rmi kiranp23/webapp:{{ image_version }}
