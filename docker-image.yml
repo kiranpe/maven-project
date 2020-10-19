@@ -41,3 +41,6 @@
 
     - name: Removing image from local
       command: docker rmi kiranp23/webapp:{{ image_version }}
+      
+    - name: Clean docker files from local system
+      command: docker system prune --all -f
