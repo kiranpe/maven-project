@@ -37,7 +37,7 @@
       command: docker rm webapp
       
     - name: Login in to DockerHub
-      commnad: docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}
+      commnad: docker login -u {{ dockerHubUser }} -p {{ dockerHubPassword }}
 
     - name: Pushing image to dockerhub
       command: docker push kiranp23/webapp:{{ image_version }}
