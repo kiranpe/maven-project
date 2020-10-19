@@ -22,8 +22,10 @@ pipeline {
             }
         }
         stage ('Create Docker Image'){
-                   steps {
-                    sh """ansible-playbook ${WORKSPACE}/docker-image.yml -e image_version='${env.IMAGE_VERSION}'"""
+            steps {
+              withCredentials([usernamePassword(credentialsId: 'docker_id', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+                 sh """ansible-playbook ${WORKSPACE}/docker-image.yml -e image_version='${env.IMAGE_VERSION}'"""
+              }    
             }
         }
 /*        stage ('Add RSA key to K8S Cluster'){
