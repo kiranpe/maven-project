@@ -24,7 +24,7 @@ pipeline {
         stage ('Create Docker Image'){
             steps {
               withCredentials([usernamePassword(credentialsId: 'docker_id', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-                 sh """ansible-playbook ${WORKSPACE}/docker-image.yml -e image_version='${env.IMAGE_VERSION}'"""
+                 sh """ansible-playbook ${WORKSPACE}/docker-image.yml -e 'dockerhub_user=${DOCKER_USER} dockerhub_pass=${DOCKER_PASSWORD} image_version=${env.IMAGE_VERSION}'"""
               }    
             }
         }
