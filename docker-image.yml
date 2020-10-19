@@ -1,14 +1,13 @@
 - name: Build Docker Image and Check Health
   hosts: localhost
-  become: yes
   gather_facts: no
 
   tasks:
     - name: Build docker image
-      command: docker build -t kiranp23/webapp:{{ image_version }} .
+      command: sudo docker build -t kiranp23/webapp:{{ image_version }} .
 
     - name: Run Docker image
-      command: docker run -p 7010:8080 --name webapp -d kiranp23/webapp:{{ image_version }}
+      command: sudo docker run -p 7010:8080 --name webapp -d kiranp23/webapp:{{ image_version }}
 
     - name: Get the external ip
       command: curl http://169.254.169.254/latest/meta-data/public-ipv4
@@ -31,16 +30,16 @@
     - debug: msg="Url staus is {{ result.status }}"
 
     - name: Stopping container
-      command: docker stop webapp
+      command: sudo docker stop webapp
 
     - name: Removing container
-      command: docker rm webapp
+      command: sudo docker rm webapp
 
     - name: Pushing image to dockerhub
-      command: docker push kiranp23/webapp:{{ image_version }}
+      command: sudo docker push kiranp23/webapp:{{ image_version }}
 
     - name: Removing image from local
-      command: docker rmi kiranp23/webapp:{{ image_version }}
+      command: sudo docker rmi kiranp23/webapp:{{ image_version }}
       
     - name: Clean docker files from local system
-      command: docker system prune --all -f
+      command: sudo docker system prune --all -f
