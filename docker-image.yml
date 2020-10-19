@@ -29,8 +29,6 @@
       retries: 5
       delay: 5
     - debug: msg="Url staus is {{ output.status }}"
-    
-    - set_fact: url_status={{ output.status }}
 
     - name: Stopping container
       command: docker stop webapp
@@ -43,7 +41,6 @@
 
     - name: Pushing image to dockerhub
       command: docker push kiranp23/webapp:{{ image_version }}
-      when: url_status == 200
 
     - name: Removing image from local
       command: docker rmi kiranp23/webapp:{{ image_version }}
