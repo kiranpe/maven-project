@@ -28,7 +28,7 @@
       until: output.status == 200
       retries: 5
       delay: 5
-    - debug: msg="Url staus is {{ result.status }}"
+    - debug: msg="Url staus is {{ output.status }}"
     
     - set_fact: url_status={{ output.status }}
 
